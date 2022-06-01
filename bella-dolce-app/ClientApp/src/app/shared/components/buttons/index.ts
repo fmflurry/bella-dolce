@@ -1,0 +1,1 @@
+export { PrimaryButtonComponent } from './primary-button/primary-button.component';

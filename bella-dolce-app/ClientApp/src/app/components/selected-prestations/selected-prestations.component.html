@@ -1,0 +1,19 @@
+<h4 mat-dialog-title>Votre sélection</h4>
+
+<mat-dialog-content *ngIf="selectedPrestations$ | async as selectedPrestations">
+  <p *ngIf="selectedPrestations.length === 0">
+    Oups, aucune prestation n'est séléctionnée pour le moment !
+  </p>
+  <ul *ngFor="let selectedPrestation of selectedPrestations">
+    <li [matTooltip]="'Supprimer cette prestation ?'"
+        (click)="remove(selectedPrestation)">
+        <i class="fa fa-trash"></i>
+        <span class="prestation-name">{{ selectedPrestation.name }}</span>
+    </li>
+  </ul>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <app-primary-button type="button"
+          mat-dialog-close>Ok</app-primary-button>
+</mat-dialog-actions>

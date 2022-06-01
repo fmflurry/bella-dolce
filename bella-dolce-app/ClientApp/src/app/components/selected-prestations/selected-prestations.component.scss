@@ -1,0 +1,15 @@
+ul {
+  list-style: none;
+}
+
+.prestation-name {
+  text-transform: capitalize;
+}
+
+li {
+  cursor: pointer;
+}
+
+li > span {
+  padding-left: 0.25rem;
+}

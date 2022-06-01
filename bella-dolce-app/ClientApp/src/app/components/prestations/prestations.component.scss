@@ -1,0 +1,19 @@
+
+mat-card-subtitle {
+  text-transform: uppercase;
+}
+
+mat-card {
+  margin-bottom: 1rem;
+}
+
+.prestation-checked {
+  border-left: solid 5px lightgreen;
+  border-right: solid 5px lightgreen;
+}
+
+@media (max-width: 768px) {
+  :host {
+    font-size: 10px;
+  }
+}

@@ -9,6 +9,7 @@
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <RootNamespace>bella_dolce_app</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
+	<UseAppHost>false</UseAppHost>
   </PropertyGroup>
 
   <ItemGroup>

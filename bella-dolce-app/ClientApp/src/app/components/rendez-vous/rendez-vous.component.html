@@ -1,0 +1,49 @@
+<div class="container h-100">
+  <div class="row">
+    <div class="col-12">
+      <ol class="c-stepper">
+        <li class="c-stepper__item"
+            [ngClass]="{
+              'c-stepper__item_current': currentStep === 1,
+              'c-stepper__item_activated': currentStep > 1
+            }">
+            <h3 class="c-stepper__title">Prestations</h3>
+        </li>
+        <li class="c-stepper__item"
+            [ngClass]="{
+              'c-stepper__item_current': currentStep === 2,
+              'c-stepper__item_activated': currentStep > 2
+            }">
+          <h3 class="c-stepper__title">RDV</h3>
+      </li>
+      <li class="c-stepper__item"
+          [ngClass]="{
+            'c-stepper__item_current': currentStep === 3,
+            'c-stepper__item_activated': currentStep > 3
+          }">
+        <h3 class="c-stepper__title">Paiement</h3>
+      </li>
+      </ol>
+    </div>
+  </div>
+  <div app-prestations
+       *ngIf="currentStep === 1"
+       class="row text-center vh-70 pt-1"></div>
+  <div app-select-rendez-vous
+       *ngIf="currentStep === 2"
+       class="row text-center vh-70 pt-1"></div>
+  <div class="row">
+    <div class="col">
+      <div class="rdv-footer">
+
+        <div *ngIf="currentStep === 1">
+          <app-shopping-cart></app-shopping-cart>
+          <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="currentStep = 2;">Sélectionner RDV</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
