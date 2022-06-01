@@ -35,6 +35,16 @@ export class PrestationsComponent implements OnInit, OnDestroy {
         const updatedSelectedPrestations: Prestation[] = [...Object.keys(selectedPrestations)].map(prestationId => selectedPrestations[prestationId]) || [];
         const formerSelectedPrestations: Prestation[] = [...Object.keys(this.selectedPrestations)].map(prestationId => this.selectedPrestations[prestationId]) || [];
 
+        console.log(this.prestations);
+        // remove prestations already selected
+        this.prestations = this.prestations.reduce((acc, curr) => {
+          if (!selectedPrestations.hasOwnProperty(curr.id)) {
+            acc.push(curr);
+          }
+          return acc;
+        }, [] as Prestation[]);
+        console.log(this.prestations);
+
         if (updatedSelectedPrestations.length < formerSelectedPrestations.length) {
           // Prestation was removed, add it to rendered prestations
           const prestationId = [...Object.keys(this.selectedPrestations)].find(key => !selectedPrestations.hasOwnProperty(key));
@@ -42,6 +52,7 @@ export class PrestationsComponent implements OnInit, OnDestroy {
           const { byAlphabetical } = this;
           this.prestations = [...this.prestations, prestation].sort(byAlphabetical);
         }
+
 
         this.selectedPrestations = {...selectedPrestations};
       });
@@ -54,12 +65,6 @@ export class PrestationsComponent implements OnInit, OnDestroy {
   add(prestation: Prestation) {
     // add prestation to selectedPrestations in store
     this.prestationsStore.add(prestation);
-    
-    // remove prestations from view
-    const updatedPrestations = [...this.prestations]; // no mutation
-    const index = this.prestations.findIndex(p => p.id === prestation.id);
-    updatedPrestations.splice(index, 1);
-    this.prestations = updatedPrestations;
   }
 
   byAlphabetical(a: Prestation, b: Prestation) {

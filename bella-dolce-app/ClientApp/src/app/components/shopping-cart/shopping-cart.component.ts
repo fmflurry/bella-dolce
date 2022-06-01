@@ -27,6 +27,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.isAlive = false;
+    this.matDialog.closeAll();
   }
 
   openSelectedPrestations() {

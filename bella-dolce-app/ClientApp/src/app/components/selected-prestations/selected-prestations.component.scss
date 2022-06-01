@@ -6,10 +6,14 @@ ul {
   text-transform: capitalize;
 }
 
-li {
+li > i{
   cursor: pointer;
 }
 
 li > span {
   padding-left: 0.25rem;
+}
+
+i:hover + span {
+  font-weight: bold;
 }
