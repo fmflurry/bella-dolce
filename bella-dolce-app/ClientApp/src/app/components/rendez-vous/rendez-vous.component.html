@@ -38,9 +38,8 @@
 
         <div *ngIf="currentStep === 1">
           <app-shopping-cart></app-shopping-cart>
-          <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="currentStep = 2;">Sélectionner RDV</a>
+          <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="changeStep(2)">Sélectionner RDV</a>
         </div>
-
       </div>
     </div>
   </div>

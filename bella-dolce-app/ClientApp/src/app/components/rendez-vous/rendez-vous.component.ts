@@ -14,7 +14,7 @@ import { takeWhile } from "rxjs/operators";
 export class RendezVousComponent implements OnInit, OnDestroy {
 
   form!: FormGroup;
-  currentStep = 1;
+  currentStep!: number;
   hasSelectedPrestation = false;
 
   private isAlive = true;
@@ -30,6 +30,12 @@ export class RendezVousComponent implements OnInit, OnDestroy {
       emailAddress: ['', Validators.required],
     });
 
+    this.prestationsStore.watchStep()
+        .pipe(takeWhile(() => this.isAlive))
+        .subscribe(step => {
+          this.currentStep = step;
+        });
+
     this.prestationsStore.watch()
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(selectedPrestations => {
@@ -39,6 +45,10 @@ export class RendezVousComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.isAlive = false;
+  }
+
+  changeStep(stepNumber: number) {
+    this.prestationsStore.setStep(stepNumber);
   }
   
 }

@@ -7,6 +7,7 @@ import { BehaviorSubject } from "rxjs";
 })
 export class PrestationsStore {
 
+  private step$ = new BehaviorSubject(1); // default step
   private selectedPrestations: Record<string, Prestation> = {};
   private selectedPrestations$ = new BehaviorSubject<Record<string, Prestation>>({});
 
@@ -27,6 +28,14 @@ export class PrestationsStore {
 
   watch() {
     return this.selectedPrestations$;
+  }
+
+  setStep(stepNumber: number) {
+    this.step$.next(stepNumber);
+  }
+
+  watchStep() {
+    return this.step$;
   }
 
   private refresh(selectedPrestations: Record<string, Prestation>) {
