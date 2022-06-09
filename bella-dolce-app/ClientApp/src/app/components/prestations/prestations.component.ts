@@ -14,7 +14,7 @@ export class PrestationsComponent implements OnInit, OnDestroy {
 
   prestations: Prestation[] = [];
   allPrestations: Prestation[] = [];
-  selectedPrestations: Record<string, Prestation> = {};
+  selectedPrestations: Record<number, Prestation> = {};
   private isAlive = true;
 
   constructor(private prestationsService: PrestationsService, private prestationsStore: PrestationsStore) {}
@@ -33,9 +33,8 @@ export class PrestationsComponent implements OnInit, OnDestroy {
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(selectedPrestations => {
         const updatedSelectedPrestations: Prestation[] = [...Object.keys(selectedPrestations)].map(prestationId => selectedPrestations[prestationId]) || [];
-        const formerSelectedPrestations: Prestation[] = [...Object.keys(this.selectedPrestations)].map(prestationId => this.selectedPrestations[prestationId]) || [];
+        const formerSelectedPrestations: Prestation[] = [...Object.keys(this.selectedPrestations)].map(prestationId => this.selectedPrestations[+prestationId]) || [];
 
-        console.log(this.prestations);
         // remove prestations already selected
         this.prestations = this.prestations.reduce((acc, curr) => {
           if (!selectedPrestations.hasOwnProperty(curr.id)) {
@@ -43,12 +42,11 @@ export class PrestationsComponent implements OnInit, OnDestroy {
           }
           return acc;
         }, [] as Prestation[]);
-        console.log(this.prestations);
 
         if (updatedSelectedPrestations.length < formerSelectedPrestations.length) {
           // Prestation was removed, add it to rendered prestations
           const prestationId = [...Object.keys(this.selectedPrestations)].find(key => !selectedPrestations.hasOwnProperty(key));
-          const prestation = this.allPrestations.find(allPresta => allPresta.id === prestationId) as Prestation;
+          const prestation = this.allPrestations.find(allPresta => `${allPresta.id}` === prestationId) as Prestation;
           const { byAlphabetical } = this;
           this.prestations = [...this.prestations, prestation].sort(byAlphabetical);
         }

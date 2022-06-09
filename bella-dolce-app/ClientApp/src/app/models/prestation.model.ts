@@ -1,5 +1,5 @@
 export interface Prestation {
-  id: string;
+  id: number;
   name: string;
   price: number;
   duration: number; // minutes

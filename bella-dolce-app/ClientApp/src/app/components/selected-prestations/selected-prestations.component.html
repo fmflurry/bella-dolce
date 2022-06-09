@@ -4,11 +4,15 @@
   <p *ngIf="selectedPrestations.length === 0">
     Oups, aucune prestation n'est séléctionnée pour le moment !
   </p>
-  <ul *ngFor="let selectedPrestation of selectedPrestations">
-    <li>
+  <ul>
+    <li *ngFor="let selectedPrestation of selectedPrestations">
       <i class="fa fa-trash" (click)="remove(selectedPrestation)" [matTooltip]="'Supprimer cette prestation ?'"></i>
-      <span class="prestation-name">{{ selectedPrestation.name }}</span>
+      <span class="prestation-name">{{ selectedPrestation.name }} ({{ selectedPrestation.price }}€)</span>
     </li>
+  <li *ngIf="selectedPrestations?.length"
+      style="padding-top: 0.5rem;">
+    Total : {{ totalCost }}€
+  </li>
   </ul>
 </mat-dialog-content>
 

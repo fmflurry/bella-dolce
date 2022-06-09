@@ -26,12 +26,21 @@
       </ol>
     </div>
   </div>
+
   <div app-prestations
        *ngIf="currentStep === 1"
-       class="row text-center vh-70 pt-1"></div>
+       class="row text-center vh-70 pt-1">
+  </div>
+
   <div app-select-rendez-vous
        *ngIf="currentStep === 2"
-       class="row text-center vh-70 pt-1"></div>
+       class="row text-center vh-70 pt-1">
+  </div>
+
+  <div *ngIf="currentStep === 3"
+       class="row text-center vh-70 pt-1">
+  </div>
+    
   <div class="row">
     <div class="col">
       <div class="rdv-footer">
@@ -40,6 +49,18 @@
           <app-shopping-cart></app-shopping-cart>
           <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="changeStep(2)">Sélectionner RDV</a>
         </div>
+
+        <div *ngIf="currentStep === 2">
+          <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="changeStep(1)">Modifier mes prestations</a>
+          <app-shopping-cart></app-shopping-cart>
+          <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="changeStep(3)">Payer</a>
+        </div>
+
+        <div *ngIf="currentStep === 3">
+          <a *ngIf="hasSelectedPrestation" href="javascript:void(0)" (click)="changeStep(2)">Modifier mon RDV</a>
+          <app-shopping-cart></app-shopping-cart>
+        </div>
+
       </div>
     </div>
   </div>

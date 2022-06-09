@@ -7,8 +7,7 @@
     </mat-card-content>
     <mat-divider inset></mat-divider>
     <mat-card-actions>
-      <app-primary-button *ngIf="!selectedPrestations[prestation.id]"
-                          (click)="add(prestation)">
+      <app-primary-button (click)="add(prestation)">
         <span> <i class="fas fa-solid fa-check"></i> Je veux</span>  
       </app-primary-button>
     </mat-card-actions>

@@ -12,16 +12,22 @@ import { map, tap } from "rxjs/operators";
 export class SelectedPrestationsComponent implements OnInit {
 
   selectedPrestations$!: Observable<Prestation[]>;
+  totalCost = 0;
 
   constructor(private prestationsStore: PrestationsStore) {}
 
   ngOnInit() {
     this.selectedPrestations$ = this.prestationsStore.watch().pipe(
-      map(prestations => ([...Object.keys(prestations)].map(key => prestations[key])))
+      map(prestations => {
+        const selectedPrestations = [...Object.keys(prestations)].map(key => prestations[key]);
+        this.totalCost = selectedPrestations.reduce((acc, curr) => acc + curr.price, 0);
+        return selectedPrestations;
+      })
     );
   }
 
   remove(prestation: Prestation) {
+    console.log(prestation);
     this.prestationsStore.remove(prestation);
   }
 

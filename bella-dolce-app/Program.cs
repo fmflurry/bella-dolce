@@ -1,8 +1,15 @@
+using MinimalApi.Endpoint.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddEndpoints();
 
-builder.Services.AddControllersWithViews();
+// Register modules
+builder.Services.RegisterModules();
+BellaDolce.WebApi.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
+
+// builder.Services.AddControllers();
+// builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
@@ -17,10 +24,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+// Register modules' endpoints
+app.MapEndpoints();
 
 app.MapFallbackToFile("index.html");;
 

@@ -17,6 +17,7 @@ export class PrestationsStore {
   }
 
   remove(prestation: Prestation) {
+    console.log(prestation);
     delete this.selectedPrestations[prestation.id];
     this.refresh(this.selectedPrestations);
   }
