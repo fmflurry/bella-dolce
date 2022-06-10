@@ -12,5 +12,5 @@ public class ListPrestationsResponse : BaseResponse
     {
     }
 
-    public List<Prestation> Prestations { get; set; } = new List<Prestation>();
+    public IList<Prestation> Prestations { get; set; } = new List<Prestation>();
 }

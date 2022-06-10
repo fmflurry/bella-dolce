@@ -2,14 +2,17 @@ using MinimalApi.Endpoint.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Regiser Endpoints
 builder.Services.AddEndpoints();
 
 // Register modules
 builder.Services.RegisterModules();
+
+// Configure Dbs
 BellaDolce.WebApi.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
 
-// builder.Services.AddControllers();
-// builder.Services.AddEndpointsApiExplorer();
+// Configure AutoMapper profiles
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 var app = builder.Build();
 

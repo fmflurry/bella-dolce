@@ -1,3 +1,4 @@
+using AutoMapper;
 using BellaDolce.WebApi.Prestations.Models;
 using BellaDolce.WebApi.Prestations.Ports;
 using MinimalApi.Endpoint;
@@ -11,6 +12,12 @@ public class PrestationsEndpoints : IEndpoint<IResult>
 {
 
   private IPrestationsRepository _prestationsRepository = default!;
+  private readonly IMapper _mapper = default!;
+
+  public PrestationsEndpoints(IMapper mapper)
+  {
+    _mapper = mapper;
+  }
 
   public void AddRoute(IEndpointRouteBuilder app)
   {
@@ -28,15 +35,7 @@ public class PrestationsEndpoints : IEndpoint<IResult>
   {
     var response = new ListPrestationsResponse();
     var prestations = await _prestationsRepository.GetPrestationsAsync();
-    // TODO : Mapping
-    response.Prestations = prestations.Select(p => new Prestation
-    {
-      Description = p.Description,
-      Duration = p.Duration,
-      Id = p.Id,
-      Name = p.Name,
-      Price = p.Price
-    }).ToList();
+    response.Prestations = _mapper.Map<IList<Prestation>>(prestations);
 
     return Results.Ok(response);
   }
