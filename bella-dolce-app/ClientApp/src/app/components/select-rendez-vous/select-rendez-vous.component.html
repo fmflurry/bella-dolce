@@ -1,1 +1,12 @@
-TODO : RENDEZ-VOUS
+<app-overlay-spinner [showSpinner]="isLoading">
+  <div class="row text-center vh-70 pt-1">
+    <div *ngFor="let appointment of availableAppointments" class="col-12 col-lg-3">
+      <app-expansion-panel [title]="appointment.day">
+        <app-primary-button *ngFor="let appointmentTime of appointment.times"
+                            (click)="selectedAppointmentId = appointment.id">
+          {{ appointmentTime }}
+        </app-primary-button>
+      </app-expansion-panel>
+    </div>
+  </div>
+</app-overlay-spinner>

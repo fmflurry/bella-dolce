@@ -1,18 +1,22 @@
-<div *ngFor="let prestation of prestations" class="col-6 col-lg-3">
-  <mat-card [ngClass]="{ 'prestation-checked': selectedPrestations[prestation.id] }">
-    <mat-card-subtitle>{{ prestation.name }}</mat-card-subtitle>
-    <mat-card-title>{{ prestation.price }} €</mat-card-title>
-    <mat-card-content>
-      <p>{{ prestation.duration | duration }}</p>
-    </mat-card-content>
-    <mat-divider inset></mat-divider>
-    <mat-card-actions>
-      <app-primary-button (click)="add(prestation)">
-        <span> <i class="fas fa-solid fa-check"></i> Je veux</span>  
-      </app-primary-button>
-    </mat-card-actions>
-    <mat-card-footer>
-      {{ prestation.description }}
-    </mat-card-footer>
-  </mat-card>
-</div>
+<app-overlay-spinner [showSpinner]="isLoading">
+  <div class="row text-center vh-70 pt-1">
+    <div *ngFor="let prestation of prestations" class="col-6 col-lg-3">
+      <mat-card [ngClass]="{ 'prestation-checked': selectedPrestations[prestation.id] }">
+        <mat-card-subtitle>{{ prestation.name }}</mat-card-subtitle>
+        <mat-card-title>{{ prestation.price }} €</mat-card-title>
+        <mat-card-content>
+          <p>{{ prestation.duration | duration }}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+          <app-primary-button (click)="add(prestation)">
+            <span> <i class="fas fa-solid fa-check"></i> Je veux</span>  
+          </app-primary-button>
+        </mat-card-actions>
+        <mat-card-footer>
+          {{ prestation.description }}
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</app-overlay-spinner>

@@ -1,0 +1,13 @@
+.app-primary-button {
+  margin: 0 0.25rem 0.25rem 0;
+}
+
+mat-expansion-panel {
+  margin-bottom: 1rem !important;
+}
+
+@media (max-width: 768px) {
+  :body {
+    font-size: 10px;
+  }
+}

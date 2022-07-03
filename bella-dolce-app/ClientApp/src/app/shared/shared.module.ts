@@ -1,12 +1,22 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { PrimaryButtonComponent } from "./components";
+import { MaterialModule } from "@app/material/material.module";
+import { ExpansionPanelComponent, OverlaySpinnerComponent, PrimaryButtonComponent } from "./components";
 
 @NgModule({
+  imports: [
+    CommonModule,
+    MaterialModule,
+  ],
   declarations: [
-    PrimaryButtonComponent
+    PrimaryButtonComponent,
+    OverlaySpinnerComponent,
+    ExpansionPanelComponent
   ],
   exports: [
-    PrimaryButtonComponent
+    PrimaryButtonComponent,
+    OverlaySpinnerComponent,
+    ExpansionPanelComponent
   ]
 })
 export class SharedModule {

@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Prestation } from "@app/models";
-import { of } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({

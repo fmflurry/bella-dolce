@@ -27,7 +27,6 @@ export class SelectedPrestationsComponent implements OnInit {
   }
 
   remove(prestation: Prestation) {
-    console.log(prestation);
     this.prestationsStore.remove(prestation);
   }
 

@@ -17,7 +17,7 @@ export class DurationPipe implements PipeTransform {
       return `${hours}h`;
     }
 
-    // more than 1 hour
+    // hours with minutes
     const hours = Math.floor(durationMinutes / 60);
     const minutes = durationMinutes % 60;
     return `${hours}h ${minutes}mn`;

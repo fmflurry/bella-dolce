@@ -5,6 +5,9 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
+// import { MatAcorditionModule } from '@angular/material/acordition';
 
 @NgModule({
   exports: [
@@ -13,7 +16,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDividerModule,
     MatBadgeModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
   ],
 })
 export class MaterialModule {

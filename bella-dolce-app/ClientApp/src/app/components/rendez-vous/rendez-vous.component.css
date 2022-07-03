@@ -34,7 +34,6 @@ ol {
 
 .c-stepper__item_activated:before {
   background-color: lightgreen;
-  content: "✔";
 }
 
 .c-stepper__item:not(:last-child):after {
