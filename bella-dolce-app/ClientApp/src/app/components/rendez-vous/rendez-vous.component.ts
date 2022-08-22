@@ -50,5 +50,5 @@ export class RendezVousComponent implements OnInit, OnDestroy {
   changeStep(stepNumber: number) {
     this.prestationsStore.setStep(stepNumber);
   }
-  
+
 }

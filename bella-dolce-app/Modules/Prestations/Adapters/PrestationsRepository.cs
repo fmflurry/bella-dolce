@@ -1,6 +1,7 @@
 using BellaDolce.WebApi.Core.Entities;
 using BellaDolce.WebApi.Infrastructure.Data;
 using BellaDolce.WebApi.Prestations.Ports;
+using Microsoft.EntityFrameworkCore;
 
 namespace BellaDolce.WebApi.Prestations.Adapters;
 
@@ -16,6 +17,6 @@ public class PrestationsRepository : IPrestationsRepository
 
   public async Task<IEnumerable<PrestationEntity>> GetPrestationsAsync()
   {
-    return await Task.FromResult(_catalogContext.Prestations.AsEnumerable());
+    return await Task.FromResult(_catalogContext.Prestations.Include(p => p.Category).AsEnumerable());
   }
 }

@@ -1,6 +1,36 @@
 <app-overlay-spinner [showSpinner]="isLoading">
+  <div class="row vh-70 pt-1">
+    <mat-form-field [style.width]="'100%'">
+      <mat-label>Catégories</mat-label>
+      <mat-chip-list #chipList aria-label="Category selection">
+        <mat-chip *ngFor="let category of categories"
+                  (removed)="removeCategory(category)">
+          {{ category }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input *ngIf="allCategories?.length !== categories?.length"
+               placeholder="Ajouter une catégorie..."
+               (click)="onCategoryInputClick($event)"
+               #categoryInput
+               #trigger="matAutocompleteTrigger"
+               [formControl]="category"
+               [matAutocomplete]="auto"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               (matChipInputTokenEnd)="addCategory($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete"
+                        (optionSelected)="selectedCategory($event)">
+        <mat-option *ngFor="let category of filteredCategories$ | async" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
   <div class="row text-center vh-70 pt-1">
-    <div *ngFor="let prestation of prestations" class="col-6 col-lg-3">
+    <div *ngFor="let prestation of filteredPrestations" class="col-6 col-lg-3">
       <mat-card [ngClass]="{ 'prestation-checked': selectedPrestations[prestation.id] }">
         <mat-card-subtitle>{{ prestation.name }}</mat-card-subtitle>
         <mat-card-title>{{ prestation.price }} €</mat-card-title>

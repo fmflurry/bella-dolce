@@ -4,10 +4,11 @@ using BellaDolce.WebApi.Prestations.Ports;
 public class PrestationsModule : IModule
 {
     // Configure DI Containers
-  public IServiceCollection RegisterModule(IServiceCollection services)
-  {
-    services.AddScoped<IPrestationsRepository, PrestationsRepository>();
-    return services;
-  }
+    public IServiceCollection RegisterModule(IServiceCollection services)
+    {
+        services.AddScoped<IPrestationsRepository, PrestationsRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        return services;
+    }
 
 }

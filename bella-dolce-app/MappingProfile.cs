@@ -7,6 +7,8 @@ public class MappingProfile : Profile
 
     public MappingProfile()
     {
-        CreateMap<PrestationEntity, Prestation>();
+        CreateMap<PrestationEntity, Prestation>()
+            .ForSourceMember(p => p.CategoryId, opt => opt.DoNotValidate());
+        CreateMap<CategoryEntity, Category>();
     }
 }

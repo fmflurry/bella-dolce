@@ -10,6 +10,13 @@ export class PrestationsService {
 
   constructor(private httpClient : HttpClient) {}
 
+  getPrestationCategories() {
+    return this.httpClient.get<Record<string, string[]>>('api/prestations/categories')
+      .pipe(
+        map(prestationCategoriesResult => prestationCategoriesResult.categories)
+      );
+  }
+
   getPrestations() {
     return this.httpClient.get<Record<string, Prestation[]>>('api/prestations')
       .pipe(
