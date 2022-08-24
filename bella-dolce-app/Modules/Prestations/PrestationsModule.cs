@@ -1,6 +1,8 @@
 using BellaDolce.WebApi.Prestations.Adapters;
 using BellaDolce.WebApi.Prestations.Ports;
 
+namespace BellaDolce.WebApi.Prestations;
+
 public class PrestationsModule : IModule
 {
     // Configure DI Containers

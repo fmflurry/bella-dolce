@@ -7,6 +7,7 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api/prestations",
+      "/api/authenticate"
    ],
     target: target,
     secure: false

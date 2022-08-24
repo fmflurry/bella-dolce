@@ -14,12 +14,12 @@
           <input *ngIf="allCategories?.length !== categories?.length"
                 placeholder="Ajouter une catégorie..."
                 (click)="onCategoryInputClick($event)"
+                (keypress)="$event.stopPropagation()"
                 #categoryInput
                 #trigger="matAutocompleteTrigger"
                 [formControl]="category"
                 [matAutocomplete]="auto"
-                [matChipInputFor]="chipList"
-                (matChipInputTokenEnd)="addCategory($event)">
+                [matChipInputFor]="chipList">
         </mat-chip-list>
         <mat-autocomplete #auto="matAutocomplete"
                           (optionSelected)="selectedCategory($event)">

@@ -5,8 +5,7 @@ import { Prestation } from "@app/models";
 import { PrestationsService } from "@app/services";
 import { PrestationsStore } from "@app/shared/store/prestations.store";
 import { combineLatest, Observable } from "rxjs";
-import { takeWhile, mergeMap, startWith, map, tap } from "rxjs/operators";
-import { MatChipInputEvent } from "@angular/material/chips";
+import { takeWhile, startWith, map, tap } from "rxjs/operators";
 
 @Component({
   selector: '[app-prestations]',
@@ -91,23 +90,8 @@ export class PrestationsComponent implements OnInit, OnDestroy {
     this.tag.valueChanges.pipe(
       takeWhile(() => this.isAlive)
     ).subscribe(keyWordInput => {
-      if (!keyWordInput) {
-        this.filteredPrestations = this.availablePrestations;
-      }
-
-      const keywordWithoutDiacritics = this.getLowerWithoutDiacritics(keyWordInput);
-      this.filteredPrestations = this.availablePrestations.filter(ap => {
-        const prestationName = this.getLowerWithoutDiacritics(ap.name);
-        const prestationDescription = this.getLowerWithoutDiacritics(ap.description || '');
-        const prestationCategory = this.getLowerWithoutDiacritics(ap.category.name);
-
-        return prestationName.includes(keywordWithoutDiacritics)
-          || prestationDescription.includes(keywordWithoutDiacritics)
-          || prestationCategory.includes(keywordWithoutDiacritics);
-      });
+      this.filteredPrestations = this.getFilteredPrestations(this.availablePrestations);
     })
-
-
   }
 
   ngOnDestroy() {
@@ -117,21 +101,6 @@ export class PrestationsComponent implements OnInit, OnDestroy {
   add(prestation: Prestation) {
     // add prestation to selectedPrestations in store
     this.prestationsStore.add(prestation);
-  }
-
-  addCategory(event: MatChipInputEvent) {
-    const category = (event.value || '').trim();
-
-    // Add category
-    if (category) {
-      this.categories = [...this.categories, category];
-    }
-
-    // Clear input value
-    event.chipInput!.clear();
-    this.category.setValue(null);
-
-    this.filteredPrestations = this.getFilteredPrestations(this.availablePrestations);
   }
 
   removeCategory(category: string) {
@@ -158,7 +127,18 @@ export class PrestationsComponent implements OnInit, OnDestroy {
   }
 
   private getFilteredPrestations(prestations: Prestation[]) {
-    return prestations.filter(p => this.categories.indexOf(p.category.name) >= 0);
+    const keyWordInput = this.tag.value;
+    const keywordWithoutDiacritics = this.getLowerWithoutDiacritics(keyWordInput);
+    const filteredPrestations = prestations.filter(ap => {
+      const prestationName = this.getLowerWithoutDiacritics(ap.name);
+      const prestationDescription = this.getLowerWithoutDiacritics(ap.description || '');
+      const prestationCategory = this.getLowerWithoutDiacritics(ap.category.name);
+
+      return prestationName.includes(keywordWithoutDiacritics)
+        || prestationDescription.includes(keywordWithoutDiacritics)
+        || prestationCategory.includes(keywordWithoutDiacritics);
+    });
+    return filteredPrestations.filter(p => this.categories.indexOf(p.category.name) >= 0);
   }
 
   private byAlphabetical(a: Prestation, b: Prestation) {

@@ -46,6 +46,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'rendez-vous', component: RendezVousComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'management',
+        loadChildren: () => import('./management/management.module').then(m => m.ManagementModule)
+      }
     ]),
     FontAwesomeModule
   ],
