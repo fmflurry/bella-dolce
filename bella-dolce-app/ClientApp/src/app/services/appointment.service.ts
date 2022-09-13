@@ -20,4 +20,9 @@ export class AppointmentService {
 
     return of(appointments);
   }
+
+  getAvailabilitiesFor(date: Date) {
+    // TODO : implement getAvailabilities for given date
+    return of(null);
+  }
 }

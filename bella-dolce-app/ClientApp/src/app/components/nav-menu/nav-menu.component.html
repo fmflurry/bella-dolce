@@ -1,6 +1,9 @@
 <header class="sticky-top">
   <nav class="navbar navbar-toggleable-sm navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
+      <a *ngIf="isAdministrator"
+         [routerLink]="['/management']"
+         class="navbar-brand text-muted">Management</a>
       <a class="navbar-brand" [routerLink]="['/']">Bella Dolce</a>
       <button class="navbar-toggler"
               type="button"
@@ -15,7 +18,7 @@
            [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow align-items-end">
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/rendez-vous']">Mes prestations</a>
+            <a class="nav-link text-dark" [routerLink]="['/rendez-vous']" (click)="goToPrestations()">Mes prestations</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/contact']">Me contacter</a>

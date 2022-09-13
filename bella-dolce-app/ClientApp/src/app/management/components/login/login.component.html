@@ -1,1 +1,33 @@
-LOGIN COMPONENT BITCH
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="loginForm"
+      class="text-center">
+
+  <div class="container">
+    <div class="col">
+
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="email"
+                matInput
+                [formControl]="usernameFormControl">
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Mot de passe</mat-label>
+          <input type="password"
+                matInput
+                [formControl]="passwordFormControl">
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <button mat-button color="primary">Connexion</button>
+      </div>
+
+    </div>
+  </div>
+
+</form>

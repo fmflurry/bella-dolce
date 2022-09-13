@@ -1,1 +1,17 @@
-DASHBOARD yo
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-lg-9">
+      <app-expansion-panel [title]="'🗓 Gérer disponibilités'">
+        <app-manage-availability></app-manage-availability>
+      </app-expansion-panel>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-9">
+      <app-expansion-panel [title]="'✔ Gérer RDV'">
+        <app-manage-appointments></app-manage-appointments>
+      </app-expansion-panel>
+    </div>
+  </div>
+</div>

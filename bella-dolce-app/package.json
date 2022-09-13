@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@angular/cdk": "12.1",
-    "@angular/material": "12.1"
+    "@angular/material": "12.1",
+    "@angular/material-moment-adapter": "^12.1.4",
+    "@auth0/angular-jwt": "^5.0.2",
+    "moment": "^2.29.4"
   }
 }

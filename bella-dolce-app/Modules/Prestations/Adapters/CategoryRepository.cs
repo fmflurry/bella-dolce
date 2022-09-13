@@ -1,8 +1,7 @@
-using BellaDolce.WebApi.Core.Entities;
 using BellaDolce.WebApi.Infrastructure.Data;
-using BellaDolce.WebApi.Prestations.Ports;
+using BellaDolce.WebApi.Modules.Prestations.Ports;
 
-namespace BellaDolce.WebApi.Prestations.Adapters;
+namespace BellaDolce.WebApi.Modules.Prestations.Adapters;
 
 public class CategoryRepository : ICategoryRepository
 {

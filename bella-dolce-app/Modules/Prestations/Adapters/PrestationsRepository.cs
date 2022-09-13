@@ -1,9 +1,9 @@
 using BellaDolce.WebApi.Core.Entities;
 using BellaDolce.WebApi.Infrastructure.Data;
-using BellaDolce.WebApi.Prestations.Ports;
+using BellaDolce.WebApi.Modules.Prestations.Ports;
 using Microsoft.EntityFrameworkCore;
 
-namespace BellaDolce.WebApi.Prestations.Adapters;
+namespace BellaDolce.WebApi.Modules.Prestations.Adapters;
 
 public class PrestationsRepository : IPrestationsRepository
 {

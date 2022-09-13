@@ -1,5 +1,5 @@
 using AutoMapper;
-using BellaDolce.WebApi.Prestations.Ports;
+using BellaDolce.WebApi.Modules.Prestations.Ports;
 using MinimalApi.Endpoint;
 
 namespace BellaDolce.WebApi.Prestations.Endpoint;

@@ -1,5 +1,5 @@
-using BellaDolce.WebApi.Prestations.Adapters;
-using BellaDolce.WebApi.Prestations.Ports;
+using BellaDolce.WebApi.Modules.Prestations.Adapters;
+using BellaDolce.WebApi.Modules.Prestations.Ports;
 
 namespace BellaDolce.WebApi.Prestations;
 

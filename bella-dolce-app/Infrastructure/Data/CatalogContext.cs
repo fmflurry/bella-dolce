@@ -12,6 +12,7 @@ public class CatalogContext : DbContext
 
     public DbSet<PrestationEntity> Prestations { get; set; } = default!;
     public DbSet<CategoryEntity> Categories { get; set; } = default!;
+    public DbSet<AvailabilityEntity> Availabilities { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

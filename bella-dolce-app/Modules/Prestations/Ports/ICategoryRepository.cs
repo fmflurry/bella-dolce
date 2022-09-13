@@ -1,4 +1,4 @@
-namespace BellaDolce.WebApi.Prestations.Ports;
+namespace BellaDolce.WebApi.Modules.Prestations.Ports;
 
 public interface ICategoryRepository
 {
